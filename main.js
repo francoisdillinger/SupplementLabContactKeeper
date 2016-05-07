@@ -12,14 +12,16 @@ app.config(['$routeProvider', function($routeProvider){
     })
 }])
 
-app.controller('MainContact',['$scope', '$location', function($scope, $location){
+app.controller('MainContact',['$scope', '$location', '$log', function($scope, $location, $log){
     $scope.buttonOne = function() {
         $location.path('/contact');
+        $log.info('We are on contact view');
     }
 }])
 
-app.controller('ViewContact', ['$scope', '$location', function($scope, $location){
+app.controller('ViewContact', ['$scope', '$location', '$log', function($scope, $location, $log){
     $scope.returnHome = function(){
         $location.path('/');
+        $log.info('We are on home view');
     }
 }])
