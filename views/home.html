@@ -1,9 +1,10 @@
 <div ng-controller="MainContact">
     <h1>this is where you start</h1>
     <form>
-        <input type="text" placeholder="Name">
+        <input type="text" placeholder="Name" ng-model="word">
         <input type="text" placeholder="Number">
         <input type="text" placeholder="Email">
+        <h3>{{word}}</h3>
     </form>
     <button ng-click="buttonOne()">click</button>
 </div>
