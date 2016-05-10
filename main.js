@@ -12,6 +12,9 @@ app.config(['$routeProvider', function($routeProvider){
     .when('/contact/:id',{
         templateUrl: 'views/contact.html',
         controller: 'ViewContact'
+        // As a side note, when setting a controller for a particular view in routing DO NOT also 
+        // add it to the HTML doc, it will digest the controller twice and repeat code over. This 
+        // a pain, and a learning experience lol
     })
 }])
 // Declaring a custom service and the contact list array that will hold all the contacts
@@ -55,7 +58,6 @@ app.controller('MainContact',['$scope', '$location', '$log', 'myInfo', function(
 
 // Controller for the details view
 app.controller('ViewContact', ['$scope', '$location', '$log', 'myInfo', '$routeParams', function($scope, $location, $log, myInfo, $routeParams){
-    
     // Function returns you to the home page
     $scope.returnHome = function(){
         $location.path('/');
