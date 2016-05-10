@@ -35,7 +35,7 @@ app.controller('MainContact',['$scope', '$location', '$log', 'myInfo', function(
         
         var contactInfo = {name: $scope.name, num: $scope.num, email: $scope.email};
         console.log(contactInfo);
-        myInfo.contactList.push(contactInfo);
+        myInfo.contactList.unshift(contactInfo);
     }
     
     $scope.submit = function(name, num, email){

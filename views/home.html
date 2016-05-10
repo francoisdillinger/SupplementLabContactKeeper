@@ -1,16 +1,22 @@
-<div ng-controller="MainContact">
-    <h1>this is where you start</h1>
-    <form>
-        <input type="text" placeholder="Name" ng-model="name">
-        <input type="text" placeholder="Number" ng-model="num">
-        <input type="text" placeholder="Email" ng-model="email">
-        <div ng-repeat="contact in contactList">
-        <!--<h3>{{contact.name}}</h3>-->
-        <a href="#/contact/{{contact.name}}"><h3>{{contact.name}}</h3></a>
-        <!--<h3>{{contact.num}}</h3>
-        <h3>{{contact.email}}</h3>-->
+<div class="body" ng-controller="MainContact">
+    <div id="content">
+        <div id="head">
+             <h1>Get them digits!</h1> 
         </div>
-    </form>
-    <button ng-click="submit(name, num, email)">Add</button>
-    <button ng-click="details()">Details</button>
+        <div>
+            <form>
+                <div>
+                    <input type="text" placeholder="Name" ng-model="name">
+                    <input type="text" placeholder="Number" ng-model="num">
+                    <input type="text" placeholder="Email" ng-model="email">
+                </div>
+                <div>
+                    <button ng-click="submit(name, num, email)">Add New Contact</button>
+                </div>
+                    <div ng-repeat="contact in contactList">
+                        <a href="#/contact/{{contact.name}}"><h3>{{contact.name}}</h3></a>
+                    </div>
+                </form>
+        </div>
+    </div>
 </div>
