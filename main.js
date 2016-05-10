@@ -13,15 +13,15 @@ app.config(['$routeProvider', function($routeProvider){
 }])
 
 app.service('myInfo', [function(){
-     this.contactList = [];
-    //  var contact = {name : 'James'};
     
-     
+     this.contactList = [];
+ 
 }]);
 
 app.controller('MainContact',['$scope', '$location', '$log', 'myInfo', function($scope, $location, $log, myInfo){
    
     $scope.contactList = myInfo.contactList;
+    
     var clearInput = function(){
         $scope.name = '';
         $scope.num = '';
@@ -29,51 +29,46 @@ app.controller('MainContact',['$scope', '$location', '$log', 'myInfo', function(
     };
     
     var anotherContact = function(){
-        // contact.name = $scope.name;
-        // contact.num = $scope.num;
-        // contact.email = $scope.email;
-        
         var contactInfo = {name: $scope.name, num: $scope.num, email: $scope.email};
-        console.log(contactInfo);
         myInfo.contactList.unshift(contactInfo);
     }
     
     $scope.submit = function(name, num, email){
-        anotherContact()
-        // console.log(name,num,email);
-        console.log(myInfo.contactList);
-        clearInput();
+        if(name == undefined || name == '' ||
+           num == undefined || num == '' ||
+           email == undefined || email == ''){
+            alert('Please fill in all fields.')
+        }
+        else{
+            anotherContact()
+            clearInput();
+        }
     }
     $scope.details = function(){
-        
-        $location.path('/contact/{{contact.name}}');
+         $location.path('/contact/{{contact.name}}');
     }
   
        
 }])
 
 app.controller('ViewContact', ['$scope', '$location', '$log', 'myInfo', '$routeParams', function($scope, $location, $log, myInfo, $routeParams){
+    
     $scope.returnHome = function(){
         $location.path('/');
         $log.debug('We are on home view');
     } 
+   
     var theName = $routeParams.id;
-    
-    // var contact = myInfo.contactList.name.theName;
     var contactArray = myInfo.contactList;
-    // $scope.details = myInfo.contactList.anotherContact.contact;
     var person;
+    
     for(var i = 0; i < contactArray.length; i++){
         var singleContact = contactArray[i];
         if(singleContact.name === theName){
-            console.log(singleContact);
-            // $scope.contactList = singleContact;
             person = singleContact;
             break;
         }
     }
     $scope.contact = person;
-     console.log(person);
-    // console.log(i);
-    // $scope.contactList = myInfo.contactList[i];
+     $log.debug(person);
 }])

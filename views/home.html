@@ -6,9 +6,9 @@
         <div>
             <form>
                 <div>
-                    <input type="text" placeholder="Name" ng-model="name">
-                    <input type="text" placeholder="Number" ng-model="num">
-                    <input type="text" placeholder="Email" ng-model="email">
+                    <input type="text" placeholder="Name" ng-model="name" required>
+                    <input type="text" placeholder="Number" ng-model="num" required>
+                    <input type="text" placeholder="Email" ng-model="email" required>
                 </div>
                 <div>
                     <button ng-click="submit(name, num, email)">Add New Contact</button>
